@@ -16,23 +16,16 @@ public class OptimizationTask {
         List<String> myList = new ArrayList<>(Arrays.asList(myArray));
         List<String> validList = new ArrayList<>();
 
-        int myListSize = myList.size();
-        int k = 0;
-        String str;
-        String s;
-
-        for (int i = 0; i<myListSize; i++){
-            str = myList.get(i);
-            for (int j = 0; j < str.length(); j++){
-                s = String.valueOf(str.charAt(j));
-                if (s.equals("a") || s.equals("b") || s.equals("c")){
+        for (String strElement : myList){
+            int k = 0;
+            for (char i : strElement.toCharArray()){
+                if (i == 'a' || i == 'b' ||i == 'c'){
                     k++;
                 }
             }
-            if (k == str.length()){
-                validList.add(str);
+            if (k == strElement.length()){
+                validList.add(strElement);
             }
-            k=0;
         }
         return validList;
     }
