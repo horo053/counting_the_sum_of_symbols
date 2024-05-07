@@ -4,12 +4,11 @@ import java.util.List;
 
 public class OptimizationTask {
     public static void main(String[] args) {
-        String[] myArray  = {"aaaa", "bbbb", "cccc", "abab", "abcabc", "aaccaab", "aabaab"};
+        String[] myArray  = {"aabaab", "aaaa", "bbubb", "cccc", "abkab", "abcabc", "aabaab", "bbbbbb"};
 
         System.out.println(changingType(myArray));
         System.out.println(countingTheSumOfLetters(myArray));
 
-        largestAmount(changingType(myArray), countingTheSumOfLetters(myArray));
     }
 
     public static List<String> changingType(String[] myArray) {
@@ -30,9 +29,11 @@ public class OptimizationTask {
         return validList;
     }
 
-    public static List<Integer> countingTheSumOfLetters(String[] validList) {
+    public static String countingTheSumOfLetters(String[] validList) {
         List<String> listForSum = new ArrayList<>(changingType(validList));
         List<Integer> sumList = new ArrayList<>();
+        int max = 0;
+        String maxStr = null;
 
         for (String strElement : listForSum){
             int sum = 0;
@@ -43,9 +44,23 @@ public class OptimizationTask {
                     case 'c': sum += 1; break;
                 }
             }
-            sumList.add(Integer.valueOf(String.valueOf(sum)));
+            if(max < sum){
+                max = sum;
+                maxStr = strElement;
+            } else if(max > sum){
+                max = max;
+                maxStr = maxStr;
+            } else {
+                if(maxStr.length() > strElement.length()){
+                    maxStr = strElement;
+                } else if(maxStr.length() < strElement.length()){
+                    maxStr = maxStr;
+                } else if(maxStr.length() == strElement.length()) {
+                    maxStr = maxStr + ", " + strElement;
+                }
+            }
         }
-        return sumList;
+        return maxStr;
     }
 
     public static void largestAmount(List<String> validList, List<Integer> sumList) {
