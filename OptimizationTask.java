@@ -44,57 +44,15 @@ public class OptimizationTask {
                     case 'c': sum += 1; break;
                 }
             }
-            if(max < sum){
+            if((max < sum) || ((max == sum) && ((maxStr.length() > strElement.length()) || (maxStr == null))) ){
                 max = sum;
                 maxStr = strElement;
                 resStr = strElement;
-            } else if(max > sum){
-                max = max;
-                maxStr = maxStr;
-                resStr = resStr;
-            } else {
-                if(maxStr.length() > strElement.length()){
-                    maxStr = strElement;
-                    resStr = strElement;
-                } else if(maxStr.length() < strElement.length()){
-                    maxStr = maxStr;
-                    resStr = resStr;
-                } else if(maxStr.length() == strElement.length()) {
-                    maxStr = strElement;
-                    resStr = resStr + ", " + strElement;
-                }
+            } else if((maxStr.length() == strElement.length()) && (max == sum)) {
+                maxStr = strElement;
+                resStr = resStr + ", " + strElement;
             }
         }
         return resStr;
     }
-
-/*    public static void largestAmount(List<String> validList, List<Integer> sumList) {
-        List<String> validLettersList = validList;
-        List<Integer> sumLettersList = sumList;
-
-        int max = 0;
-        String str = null;
-
-        for(int i = 0; i<sumLettersList.size(); i++){
-            if(max > sumLettersList.get(i)){
-                max = max;
-                str = str;
-            } else if (max < sumLettersList.get(i)){
-                max = sumLettersList.get(i);
-                str = validLettersList.get(i);
-            } else if (max == sumLettersList.get(i)){
-                if (str.length() < validLettersList.get(i).length()){
-                    max = max;
-                    str = str;
-                } else if (str.length() > validLettersList.get(i).length()){
-                    max = sumLettersList.get(i);
-                    str = validLettersList.get(i);
-                } else if (str.length() == validLettersList.get(i).length()){
-                    max = sumLettersList.get(i);
-                    str = str + ", " + validLettersList.get(i);
-                }
-            }
-        }
-        System.out.println(str);
-    }*/
 }
