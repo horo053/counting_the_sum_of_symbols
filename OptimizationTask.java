@@ -4,15 +4,15 @@ import java.util.List;
 
 public class OptimizationTask {
     public static void main(String[] args) {
-        String[] myArray  = {"aabaab", "aaaa", "bbubb", "cccc", "abkab", "abcabc", "baaaab", "bbbbbb", "aabbaa"};
+        List<String> myArray = new ArrayList<>(Arrays.asList("aabaab", "aaaa", "bbubb", "cccc", "abkab", "abcabc", "baaaab", "bbbbbb", "aabbaa"));
 
         System.out.println(changingType(myArray));
         System.out.println(countingTheSumOfLetters(myArray));
 
     }
 
-    public static List<String> changingType(String[] myArray) {
-        List<String> myList = new ArrayList<>(Arrays.asList(myArray));
+    public static List<String> changingType(List<String> myArray) {
+        List<String> myList = new ArrayList<>(myArray);
         List<String> validList = new ArrayList<>();
 
         for (String strElement : myList){
@@ -29,7 +29,7 @@ public class OptimizationTask {
         return validList;
     }
 
-    public static String countingTheSumOfLetters(String[] validList) {
+    public static String countingTheSumOfLetters(List<String> validList) {
         List<String> listForSum = new ArrayList<>(changingType(validList));
         int max = 0;
         String maxStr = null;
